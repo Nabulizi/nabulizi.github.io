@@ -1,0 +1,601 @@
+<title>Nueraili Abulizi — Senior SDET / QA Automation Engineer</title>
+<style>
+  :root {
+    --bg: #f6f8f7;
+    --surface: #ffffff;
+    --surface-2: #eef2f1;
+    --ink: #14201f;
+    --ink-soft: #2c3b39;
+    --muted: #5a6b69;
+    --faint: #8598954d;
+    --accent: #0f766e;
+    --accent-2: #0d9488;
+    --accent-wash: #0f766e14;
+    --pass: #16a34a;
+    --border: #d3dddb;
+    --shadow: 0 1px 2px rgba(20,32,31,.04), 0 8px 28px rgba(20,32,31,.06);
+    --mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --maxw: 1120px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b1413;
+      --surface: #111e1c;
+      --surface-2: #162523;
+      --ink: #e9f1ef;
+      --ink-soft: #cbd9d6;
+      --muted: #8fa5a1;
+      --accent: #2dd4bf;
+      --accent-2: #5eead4;
+      --accent-wash: #2dd4bf1a;
+      --pass: #34d399;
+      --border: #223530;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f8f7; --surface: #ffffff; --surface-2: #eef2f1;
+    --ink: #14201f; --ink-soft: #2c3b39; --muted: #5a6b69;
+    --accent: #0f766e; --accent-2: #0d9488; --accent-wash: #0f766e14;
+    --pass: #16a34a; --border: #d3dddb;
+    --shadow: 0 1px 2px rgba(20,32,31,.04), 0 8px 28px rgba(20,32,31,.06);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b1413; --surface: #111e1c; --surface-2: #162523;
+    --ink: #e9f1ef; --ink-soft: #cbd9d6; --muted: #8fa5a1;
+    --accent: #2dd4bf; --accent-2: #5eead4; --accent-wash: #2dd4bf1a;
+    --pass: #34d399; --border: #223530;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+  a { color: inherit; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px; height: 1px;
+    background: var(--accent);
+    opacity: .6;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 62px 0 46px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(600px 300px at 88% -10%, var(--accent-wash), transparent 70%);
+    pointer-events: none;
+  }
+  .status {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 13px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    margin-bottom: 26px;
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--pass);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--pass) 22%, transparent);
+  }
+  .status b { color: var(--pass); font-weight: 600; letter-spacing: .04em; }
+
+  h1 {
+    font-size: clamp(2.6rem, 6vw, 4.3rem);
+    line-height: 1.02;
+    letter-spacing: -.028em;
+    font-weight: 800;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .role {
+    font-family: var(--mono);
+    font-size: clamp(.95rem, 2vw, 1.1rem);
+    color: var(--accent);
+    letter-spacing: .02em;
+    margin: 0 0 26px;
+  }
+  .summary {
+    font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 0 0 30px;
+  }
+  .summary strong { color: var(--ink); font-weight: 650; }
+
+  .contact {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 26px;
+  }
+  .chip {
+    font-family: var(--mono);
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: border-color .18s, color .18s, transform .18s;
+  }
+  a.chip:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+
+  .stack {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+  .stack b { color: var(--ink-soft); font-weight: 600; }
+  .stack .k { color: var(--accent); }
+
+  /* ---------- METRICS ---------- */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 44px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .metric {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 20px 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .metric .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--pass);
+    letter-spacing: .08em;
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 14px;
+  }
+  .metric .num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .metric .num small { font-size: 1.4rem; font-weight: 700; color: var(--accent); margin-left: 2px; }
+  .metric .lbl {
+    color: var(--muted);
+    font-size: 13.5px;
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+  .bar {
+    height: 5px; border-radius: 3px;
+    background: var(--surface-2);
+    margin-top: 14px; overflow: hidden;
+  }
+  .bar span {
+    display: block; height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius: 3px;
+    transition: width 1.4s cubic-bezier(.2,.7,.2,1) .3s;
+  }
+  .bar.on span { width: 80%; }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: 58px 0; border-bottom: 1px solid var(--border); }
+  .sec-head { margin-bottom: 34px; }
+  .sec-head h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: -.02em;
+    font-weight: 750;
+    margin: 0;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skill-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 22px 20px;
+    box-shadow: var(--shadow);
+  }
+  .skill-card h3 {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .skill-card h3::before {
+    content: ""; width: 6px; height: 6px; border-radius: 2px;
+    background: var(--accent); transform: rotate(45deg);
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-size: 13.5px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    padding: 5px 12px;
+    border-radius: 7px;
+    transition: border-color .16s, color .16s;
+  }
+  .skill-card:hover .tag { border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); }
+
+  /* ---------- EXPERIENCE ---------- */
+  .job { position: relative; padding-left: 30px; margin-bottom: 46px; }
+  .job:last-child { margin-bottom: 0; }
+  .job::before {
+    content: ""; position: absolute; left: 5px; top: 8px; bottom: -46px;
+    width: 2px; background: var(--border);
+  }
+  .job:last-child::before { display: none; }
+  .job::after {
+    content: ""; position: absolute; left: 0; top: 5px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--bg); border: 2.5px solid var(--accent);
+  }
+  .job-top {
+    display: flex; flex-wrap: wrap; justify-content: space-between;
+    align-items: baseline; gap: 6px 18px; margin-bottom: 4px;
+  }
+  .job-top h3 { font-size: 1.28rem; font-weight: 700; letter-spacing: -.015em; margin: 0; }
+  .job-date {
+    font-family: var(--mono); font-size: 12.5px; color: var(--muted);
+    white-space: nowrap;
+  }
+  .job-co { color: var(--accent); font-size: 14.5px; font-weight: 600; margin-bottom: 22px; }
+  .job-co span { color: var(--muted); font-weight: 400; }
+
+  .group { margin-bottom: 20px; }
+  .group:last-child { margin-bottom: 0; }
+  .group-label {
+    font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border);
+  }
+  ul.cases { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  ul.cases li {
+    display: grid; grid-template-columns: 20px 1fr; gap: 12px;
+    font-size: 15px; line-height: 1.55; color: var(--ink-soft);
+  }
+  ul.cases li::before {
+    content: "✓";
+    font-family: var(--mono); font-weight: 700; font-size: 13px;
+    color: var(--pass);
+    line-height: 1.65;
+  }
+  ul.cases b { color: var(--ink); font-weight: 650; }
+
+  /* ---------- CLOSING ---------- */
+  .closing { border-bottom: none; }
+  .closing-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; }
+  .edu-item { margin-bottom: 20px; }
+  .edu-item .deg { font-weight: 650; font-size: 1.05rem; }
+  .edu-item .sch { color: var(--muted); font-size: 14.5px; }
+  .cert {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 13.5px;
+    background: var(--accent-wash); color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    padding: 7px 14px; border-radius: 8px; margin-top: 6px;
+  }
+  .langs { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; }
+  .langs li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 15px; }
+  .langs .lv { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+
+  .cta {
+    margin-top: 46px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 34px;
+    box-shadow: var(--shadow);
+    display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: space-between; gap: 20px;
+  }
+  .cta h3 { margin: 0 0 6px; font-size: 1.4rem; letter-spacing: -.02em; }
+  .cta p { margin: 0; color: var(--muted); font-size: 15px; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    font-family: var(--mono); font-size: 14px; text-decoration: none;
+    padding: 12px 22px; border-radius: 10px; transition: transform .16s, opacity .16s, background .16s;
+    border: 1px solid var(--border);
+  }
+  .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+  :root[data-theme="dark"] .btn-primary { color: #06201d; }
+  @media (prefers-color-scheme: dark) { .btn-primary { color: #06201d; } }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
+
+  footer.foot {
+    text-align: center; padding: 30px 0 40px;
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 860px) {
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .skill-grid, .closing-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .wrap { padding: 0 20px; }
+    .metrics { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: none; opacity: 1; transform: none; }
+    .bar span { transition: none; }
+  }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="status"><span class="dot"></span> suite: <span style="color:var(--ink-soft)">nueraili.abulizi</span> &nbsp;·&nbsp; 9 yrs &nbsp;·&nbsp; status: <b>PASS</b></div>
+    <h1>Nueraili Abulizi</h1>
+    <p class="role">Senior SDET · QA Automation Engineer</p>
+    <p class="summary">Nine years owning release quality for large-scale <strong>e-commerce</strong> and regulated <strong>financial</strong> platforms. I catch the defects that would have shipped, hand hours back to the teams around me, and set the automation standards other teams build on.</p>
+    <div class="contact">
+      <a class="chip" href="mailto:nueraili.work@gmail.com">✉ nueraili.work@gmail.com</a>
+      <a class="chip" href="https://linkedin.com/in/nueraili-abulizi-681726201" target="_blank" rel="noopener">in / nueraili-abulizi</a>
+      <span class="chip">◆ Fairfax, VA</span>
+    </div>
+    <p class="stack"><b>Core stack:</b> <span class="k">Playwright</span> · WebdriverIO · TypeScript · Cucumber/BDD · Evinced · CI/CD</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="metrics">
+    <div class="metric reveal">
+      <div class="tag">✓ VERIFIED</div>
+      <div class="num">9<small> yrs</small></div>
+      <div class="lbl">Owning release quality across e-commerce &amp; fintech</div>
+    </div>
+    <div class="metric reveal">
+      <div class="tag">✓ VERIFIED</div>
+      <div class="num">80<small>%</small></div>
+      <div class="lbl">Automated coverage raised across 10+ microservices</div>
+      <div class="bar" id="covbar"><span></span></div>
+    </div>
+    <div class="metric reveal">
+      <div class="tag">✓ VERIFIED</div>
+      <div class="num">15<small> hrs/wk</small></div>
+      <div class="lbl">Returned to the Merchandise team via workflow automation</div>
+    </div>
+    <div class="metric reveal">
+      <div class="tag">✓ VERIFIED</div>
+      <div class="num">5<small> teams</small></div>
+      <div class="lbl">Adopted the Playwright standards I authored</div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Capabilities</p>
+      <h2>The toolkit</h2>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-card reveal">
+        <h3>Test Automation</h3>
+        <div class="tags">
+          <span class="tag">Playwright</span><span class="tag">WebdriverIO</span><span class="tag">Selenium</span>
+          <span class="tag">Cucumber/BDD</span><span class="tag">Jest</span><span class="tag">AI-assisted authoring · Copilot · Claude · Codex</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Languages</h3>
+        <div class="tags">
+          <span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Node.js (ESM)</span>
+          <span class="tag">Go</span><span class="tag">Java</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>CI/CD &amp; Performance</h3>
+        <div class="tags">
+          <span class="tag">Jenkins</span><span class="tag">GitHub Actions</span><span class="tag">BrowserStack</span>
+          <span class="tag">k6</span><span class="tag">Lighthouse</span><span class="tag">JUnit XML</span><span class="tag">Playwright HTML Reports</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Monitoring &amp; API</h3>
+        <div class="tags">
+          <span class="tag">Checkly Synthetic Monitoring</span><span class="tag">REST APIs</span>
+          <span class="tag">Postman · schema validation</span><span class="tag">Splunk</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Accessibility</h3>
+        <div class="tags">
+          <span class="tag">Evinced SDK</span><span class="tag">WCAG / ADA</span><span class="tag">Web Flow Analyzer</span>
+          <span class="tag">Site Scanner</span><span class="tag">Lighthouse</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Commerce Platforms</h3>
+        <div class="tags">
+          <span class="tag">Kibo Commerce</span><span class="tag">Hybris / SAP</span><span class="tag">Fusion CMS</span>
+          <span class="tag">Redis</span><span class="tag">Talon One</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Track record</p>
+      <h2>Experience</h2>
+    </div>
+
+    <div class="job reveal">
+      <div class="job-top">
+        <h3>Senior QA Automation Engineer</h3>
+        <span class="job-date">Jun 2019 – Present</span>
+      </div>
+      <div class="job-co">Total Wine &amp; More <span>· Bethesda, MD — largest U.S. independent alcohol retailer</span></div>
+
+      <div class="group">
+        <p class="group-label">Defect Discovery &amp; Release Quality</p>
+        <ul class="cases">
+          <li><span><b>Prevented unauthorized early-access purchasing</b> by discovering an eligibility bypass in the Priority Access members-only purchase flow ahead of release — documented reproducible evidence, authored the acceptance criteria, and validated the fix before ship.</span></li>
+          <li><span>Caught a <b>client-side redirect defect</b> in the product-detail flow before it reached production and drove it through remediation, protecting the site's highest-traffic conversion path.</span></li>
+          <li><span>Led <b>WCAG/ADA remediation</b> across three micro-frontends using the Evinced SDK — fixing broken <code>aria-describedby</code> relationships, modal focus-trap failures, nested interactive controls, and missing screen-reader confirmations.</span></li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <p class="group-label">Automation Architecture &amp; Modernization</p>
+        <ul class="cases">
+          <li><span>Led the events micro-frontend's <b>Playwright migration</b> within a five-team modernization program — converting 18 Cucumber feature files into 12 specs and 25 passing E2E tests across Chromium desktop and mobile, with zero coverage downtime.</span></li>
+          <li><span>Designed the migration's technical foundation — a 7-object Page Object Model, a data-attribute locator strategy, and identity-API-backed session fixtures — then <b>established the BDD-to-Playwright standards</b> the wider program now follows for POM, fixtures, selectors, and CI.</span></li>
+          <li><span>Preserved full Selenium/Cucumber coverage during the cutover by isolating Playwright ESM specs from Jest discovery and adding Jenkins smoke execution and reporting.</span></li>
+          <li><span><b>Raised automated coverage to 80%</b> across 10+ microservices; refactored Gherkin across 31+ feature files and restored 24+ long-skipped tests to the trusted suite.</span></li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <p class="group-label">Platform &amp; Full-Cycle Ownership</p>
+        <ul class="cases">
+          <li><span><b>Returned 15 hrs/week to the Merchandise team</b> by automating the product-content management workflow; supported 15+ major production releases spanning Kibo Commerce, Hybris/SAP, CMS badging, Priority Access, and Bazaarvoice.</span></li>
+          <li><span>Contributed <b>Go/Redis promotion-service logic</b> for Talon One promotion start-time handling — enabling time-accurate strikethrough pricing without a storefront redeploy; led the Node 14 → 16 upgrade and carried bi-weekly Checkly on-call.</span></li>
+          <li><span>Extended release gates beyond functional coverage with <b>k6 load checks, Lighthouse audits, and Postman API schema validation</b> — catching latency, page-weight, and breaking contract changes before production.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job reveal">
+      <div class="job-top">
+        <h3>Senior QA Automation Engineer</h3>
+        <span class="job-date">Aug 2018 – Jun 2019</span>
+      </div>
+      <div class="job-co">City of Charlotte <span>· Charlotte, NC</span></div>
+      <ul class="cases">
+        <li><span>Built and maintained a UFT/QTP automation framework in VBScript that <b>cut regression testing time by 80%</b>.</span></li>
+        <li><span>Streamlined regression across multiple VMs with custom HTML reporting dashboards and DOM-based validation for financial-data checks across government applications.</span></li>
+      </ul>
+    </div>
+
+    <div class="job reveal">
+      <div class="job-top">
+        <h3>Senior QA Analyst / Automation Engineer</h3>
+        <span class="job-date">Jul 2017 – Aug 2018</span>
+      </div>
+      <div class="job-co">Navy Federal Credit Union <span>· Merrifield, VA</span></div>
+      <ul class="cases">
+        <li><span>Automated and maintained the <b>master regression suite</b> for major releases using UFT/QTP and VBScript in a regulated financial environment; generated automated test data and applied DOM/AOM validation for precise financial-data checks.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Foundations</p>
+      <h2>Education, certifications &amp; languages</h2>
+    </div>
+    <div class="closing-grid">
+      <div class="reveal">
+        <div class="edu-item">
+          <div class="deg">M.S. Management</div>
+          <div class="sch">George Mason University · Fairfax, VA</div>
+        </div>
+        <div class="edu-item">
+          <div class="deg">B.S. Computer Science</div>
+          <div class="sch">Minzu University of China</div>
+        </div>
+        <span class="cert">◈ ISTQB Certified Tester (CTFL)</span>
+      </div>
+      <div class="reveal">
+        <p class="group-label">Languages</p>
+        <ul class="langs">
+          <li><span>English</span><span class="lv">PROFESSIONAL</span></li>
+          <li><span>Mandarin Chinese</span><span class="lv">NATIVE / BILINGUAL</span></li>
+          <li><span>Uyghur</span><span class="lv">NATIVE / BILINGUAL</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cta reveal">
+      <div>
+        <h3>Let's talk about release quality.</h3>
+        <p>Open to Senior SDET / QA Automation roles. Fastest reply by email.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:nueraili.work@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/nueraili-abulizi-681726201" target="_blank" rel="noopener">LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">// built from the résumé of Nueraili Abulizi · Fairfax, VA</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add("in");
+        if (e.target.id === "covbar" || e.target.querySelector?.("#covbar")) {
+          document.getElementById("covbar")?.classList.add("on");
+        }
+        io.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.18 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  // kick the coverage bar once its card is visible
+  const cb = document.getElementById("covbar");
+  if (cb) new IntersectionObserver((es, o) => {
+    if (es[0].isIntersecting) { cb.classList.add("on"); o.disconnect(); }
+  }, { threshold: 0.4 }).observe(cb);
+</script>
